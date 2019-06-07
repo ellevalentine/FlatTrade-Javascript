@@ -77,27 +77,65 @@ function showLikes(){
     const likesUrl = "http://localhost:3000/likes"
 
 
-
     return fetch(likesUrl)
     .then(r => r.json())
-    .then(putLikesOnPage)
 
 }
 
 function putLikesOnPage(likes){
-
+    // debugger
     likes.forEach( function(like){
-
         likeCountDisplay.innerHTML = `Likes: ${like.likecount}`
-        
-
     })
-
 }
 
 showLikes()
+.then(putLikesOnPage)
 
 //-------------------------------------------------------------------------------------
 
-// add event listener to the like button 
+    const likeBTN = document.querySelector("#likeBTN") // select the like button from html
+    likeBTN.addEventListener('click', pressLikeBtn) // add event listener to the like button
+    
+//define the pressLikeBtn defined in the event listener for the like button 
+    // likesNumber = parseInt(like.likecount)
 
+        function pressLikeBtn(event){
+            
+            updateLikeOnServer()
+            .then(data => {
+                console.log(data)
+                updateLikeOnUI(data)
+            }) // why doesnt .then work here?
+        }
+
+function updateLikeOnServer(){
+    let likeCountNum= parseInt(document.querySelector('#like-count').innerText.split(' ')[1])
+    likeCountNum ++
+
+    return fetch("http://localhost:3000/likes/4", { 
+            method: 'PATCH',  // this will then call upon update method in stocks controller - make sure patch is called in application.rb under resources
+            headers: {
+             'Content-Type': 'application/json',
+             "Accept": "application/json"
+            },
+            body: JSON.stringify({ // here is what we want to send back - so will send back likes to server
+             likecount: likeCountNum
+                })
+            })
+    .then(resp => resp.json())
+    // .then(console.log)
+    }
+
+
+
+function updateLikeOnUI(data){
+    // this function runs after the update action in the likes controller goes 
+    // put degbugger in here to check what information we are getting parse down as "data" 
+
+    let likeElement = document.querySelector("#like-count") // select where i want to display the updated likecount
+
+    likeElement.innerText = `Likes: ${data.likecount}` // 
+    
+
+}
