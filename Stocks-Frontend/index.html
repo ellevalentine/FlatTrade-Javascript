@@ -167,8 +167,9 @@
           <h2 class="text-white mb-5">Leave a Comment!</h2>
 
           <form class="form-inline d-flex">
-            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter comment...">
-            <button type="submit" class="btn btn-primary mx-auto">Add Comment</button>
+              <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputName" placeholder="Enter Name...">
+            <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputComment" placeholder="Enter comment...">
+            <button type="submit" class="btn btn-primary mx-auto" id="commentSubmit">Add Comment</button>
           </form>
 
         </div>
@@ -178,6 +179,9 @@
     <div class="col-md-10 col-lg-8 mx-auto text-center text-white">
         <br><br>
       <h2>Comments:</h2>
+      <ul id="comment-list">
+
+      </ul>
 
     </div>
   </section>
@@ -194,7 +198,7 @@
               <i class="fas fa-map-marked-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Address</h4>
               <hr class="my-4">
-              <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+              <div class="small text-black-50">493 Market Street, London</div>
             </div>
           </div>
         </div>
@@ -206,7 +210,7 @@
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4">
               <div class="small text-black-50">
-                <a href="#">hello@yourdomain.com</a>
+                <a href="#">hello@FlatTrade.com</a>
               </div>
             </div>
           </div>
@@ -218,7 +222,7 @@
               <i class="fas fa-mobile-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Phone</h4>
               <hr class="my-4">
-              <div class="small text-black-50">+1 (555) 902-8832</div>
+              <div class="small text-black-50">0208 647 8732</div>
             </div>
           </div>
         </div>
@@ -256,7 +260,11 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
-  <script src="js/stocks.js"></script>
+  <script src="js/MyJs/stocks.js"></script>
+  <script src="js/MyJs/likes.js"></script>
+  <script src="js/MyJs/comments.js"></script>
+
+
 
 </body>
 

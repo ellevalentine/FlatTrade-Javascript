@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+    
     def index 
         @likes=Like.all
         render json: @likes
@@ -14,8 +15,8 @@ class LikesController < ApplicationController
 
     def update
         
-         
-        @like = Like.find(4)
+        #  byebug
+        @like = Like.find(params[:id])
         
             @like.update(likecount: params[:likecount].to_i) # grab the likes from the params sent
             render json: @like

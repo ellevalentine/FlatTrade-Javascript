@@ -6,5 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Like.destroy_all
+Comment.destroy_all
 
 Like.create(likecount: 1)
+
+# Comment.create( name: 'Elle Valentine', comment: "Hellooooooooooo, hihi this is a test comment.")
+# Comment.create( name: 'Hannah Port', comment: "Heyyyyyy, hihih this is a test comment.")
