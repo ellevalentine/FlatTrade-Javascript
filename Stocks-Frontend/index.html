@@ -62,9 +62,31 @@
         <button id="likeBTN" type="button" class="btn btn-dark">Like<i class="far fa-thumbs-up"></i></button> <br> <br>
 
         <a href="#about" class="btn btn-primary js-scroll-trigger">Stock Prices</a>
+<br><br>
+        
+  </header>
+
+    <!--------------------- Models -------------------->
+
+  <!-- Comment Modal -->
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Edit comment:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+         
+        </div>
       </div>
     </div>
-  </header>
+    <!--------------------- All Section -------------------->
+
 
   <!-- Stock Section -->
   <section id="about" class="about-section text-center">
@@ -166,7 +188,7 @@
           <i class="far fa-comments fa-2x mb-2 text-white"></i>
           <h2 class="text-white mb-5">Leave a Comment!</h2>
 
-          <form class="form-inline d-flex">
+          <form id="comment-form" class="form-inline d-flex">
               <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputName" placeholder="Enter Name...">
             <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputComment" placeholder="Enter comment...">
             <button type="submit" class="btn btn-primary mx-auto" id="commentSubmit">Add Comment</button>
@@ -179,7 +201,7 @@
     <div class="col-md-10 col-lg-8 mx-auto text-center text-white">
         <br><br>
       <h2>Comments:</h2>
-      
+
       <ul id="comment-list">
        
       </ul>

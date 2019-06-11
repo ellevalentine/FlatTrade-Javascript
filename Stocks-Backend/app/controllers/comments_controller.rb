@@ -18,6 +18,11 @@ class CommentsController < ApplicationController
         render json: @comment
     end
 
+    def update
+        byebug
+    end
+
+
     def destroy
 
         # byebug
