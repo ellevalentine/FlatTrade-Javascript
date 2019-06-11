@@ -20,11 +20,11 @@ class CommentsController < ApplicationController
 
     def destroy
 
-        #byebug
+        # byebug
 
-        # @comment = Comment.all.find_by(params[:id])
-        # comment.delete
-        # render json: comment
+        @comment = Comment.find(params[:id])
+        @comment.delete
+        render json: @comment
 
     end
 

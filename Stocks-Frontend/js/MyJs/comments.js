@@ -49,7 +49,8 @@ function pressCommentSubmitBtn(event){
     const nameInput = document.querySelector('#inputName').value
     const commentInput = document.querySelector('#inputComment').value
 // debugger
-    addCommentToServer(nameInput, commentInput).then(resp => addCommentToUI(resp))
+    addCommentToServer(nameInput, commentInput)
+    .then(resp => addCommentToUI(resp))
 }
 
 // back the comment up with server 
@@ -73,23 +74,16 @@ return fetch(commentUrl, {
 
 function addCommentToUI(data){
       
+// put the name comment delete button and edit button all inside the li tag so that we can letter call that li with its id to remove it from UI
+let commentID = data.id
 
-    let commentID = data.id
-    // commentEventListener(commentID)
-
-
-
-    // debugger
-    
-    // <button id="edit-comment-${data.id}" data-id=${data.id} class="btn btn-outline-warning btn-sm" type="button" >Edit</button> 
-    // <button id="delete-comment-${data.id}" data-id=${data.id} class="btn btn-outline-danger btn-sm" type="button" >Delete</button> 
-    
+//---- LI start
+    let commentLi = document.createElement("li") // creating list item tag
+    commentLi.id = `liId-${data.id}`
 
     let commentHr = document.createElement("hr") // horizontial rule
     
-    commentSection.append(commentHr) // append hr
-
-    let commentLi = document.createElement("li") // creating list item tag
+    commentLi.append(commentHr) // append hr
 
         let commentStrong = document.createElement("strong") //name
         commentStrong.innerText = `${data.name}:`
@@ -101,30 +95,38 @@ function addCommentToUI(data){
         let commentComment = `${data.comment}` //comment
         commentLi.append(commentComment)
 
-    commentSection.append(commentLi) // append list item
 
     let commentBr2 = document.createElement("br") // create break
 
-    commentSection.append(commentBr2) // append br
+    commentLi.append(commentBr2) // append br
+
+    let commentBr3 = document.createElement("br") // create break
+
+    commentLi.append(commentBr3) // append br
  
     let editButton = document.createElement("button") // create edit button 
           editButton.id= `edit-comment-${data.id}`
           editButton.className= "btn btn-outline-warning btn-sm"
           editButton.type="button"
           editButton.innerHTML = `Edit`
-        //   editButton.addEventListener('click', pressEditButton)
+          editButton.addEventListener('click', pressEditButton(commentID))
 
 
-    commentSection.append(editButton) // append edit
+    commentLi.append(editButton) // append edit
 
     let deleteButton = document.createElement("button") // create delete button 
     deleteButton.id= `delete-comment-${data.id}`
     deleteButton.className= "btn btn-outline-danger btn-sm"
     deleteButton.type="button"
     deleteButton.innerHTML = `Delete`
-    // deleteButton.addEventListener('click', pressDeleteButton(commentID))
+    deleteButton.addEventListener('click', () => pressDeleteButton(commentID))
  
-commentSection.append(deleteButton) // append delete
+commentLi.append(deleteButton) // append delete
+
+//-- end of LI
+
+commentSection.append(commentLi) // append list item to comment section 
+
 
 
 }
@@ -135,39 +137,46 @@ commentSection.append(deleteButton) // append delete
 
 //-------------------------------------------------------
 
-// for edit button
+// for EDIT button
 
-// function pressEditButton(){
+function pressEditButton(data){
 
-//     editCommentOnServer()
-//     .then(editCommentOnUI)
+    // editCommentOnServer()
+    // .then(editCommentOnUI)
 
-// console.log("edit")
+console.log("edit")
 }
 
 // //----------------------------------------------------
 
-// // for edit button
+// // for DELETE button
 
-// function pressDeleteButton(data){
-// // debugger
-// console.log("hello")
-//     deleteCommentFromServer(data)
-//     .then(deleteCommentFromUI(data))
+ function pressDeleteButton(data){
+ // debugger
+     deleteCommentFromServer(data)
+     .then(deleteCommentFromUI(data))
 
-    // console.log("delete")
-// }
+    //  console.log("delete")
+ }
 
-// function deleteCommentFromServer(data){
-//   debugger
-    // const commentURL = `http://localhost:3000/comments/${data}`
+ //--------
+function deleteCommentFromServer(data){
+
+    const commentURL = `http://localhost:3000/comments/${data}`
       
-    //   return fetch(commentURL, {
-    //       method: 'DELETE'
-    //   }).then(resp => resp.json())
-//   }
+      return fetch(commentURL, {
+          method: 'DELETE'
+      }).then(resp => resp.json())
+  }
 
-// function deleteCommentFromUI(data){
-//     //  debugger
-//     console.log("yoooooooo")
-// }
+//--------
+function deleteCommentFromUI(data){
+
+
+
+    const removeComment = document.querySelector(`#liId-${data}`)
+// debugger
+    removeComment.remove()
+
+     
+}
