@@ -95,7 +95,8 @@ function addCommentToUI(data) {
     let commentBr = document.createElement("br") //break
     commentLi.append(commentBr)
 
-    let commentComment = `${data.comment}` //comment
+    let commentComment = document.createElement("p")
+    commentComment.innerText = `${data.comment}` //comment
     commentLi.append(commentComment)
 
 
@@ -114,6 +115,7 @@ function addCommentToUI(data) {
     editButton.innerHTML = `Edit`
     editButton.dataset.toggle = "modal"
     editButton.dataset.target = "#commentModal"
+    editButton.dataset.id = data.id
 
     // inside the modal
     editButton.addEventListener('click', () => pressEditButton(data))
@@ -169,13 +171,13 @@ function pressEditButton(data) {
     // let modelNameInput = document.querySelector(`#name-model-${data.id}`).value
     // let modelNameInput = document.querySelector(`#comment-model-${data.id}`).value
 
-     
+    //  debugger
         modalBody.innerHTML = `
 
         <form id="modal-comment-form">
             <div class="form-group">    
                 <label>Name:</label>
-                <input id="name-model-${data.id}" type="text" value=${data.name} class="form-control" >
+                <textarea id="name-model-${data.id}" type="text" class="form-control" >${data.name} </textarea>
             </div>
             <div class="form-group">
                 <label>Comment:</label>
@@ -231,11 +233,13 @@ function pressEditButton(data) {
 function pressModalSave(commentId, nameNew, commentNew){
 
     // debugger
+    alert("Update saved!")
+
 
     editCommentOnServer(commentId, nameNew, commentNew)
     .then( resp => editCommentOnUI(resp))
 
-    console.log("hello")
+
 }
 
 
@@ -258,17 +262,18 @@ function editCommentOnServer(commentId, nameNew, commentNew) {
             comment: commentNew
         })
     }).then(resp => resp.json())
-     
+ 
 }
 
 //----
 
 function editCommentOnUI(comment){
-    
-    console.log(comment)
+    // debugger
+    let currentComment = document.querySelector(`#liId-${comment.id}`)
+    currentComment.querySelector("strong").innerText = comment.name
+    currentComment.querySelector("p").innerText = comment.comment
 
-    // putCommentsOnPage(comment) - chucks an error 
-    // addCommentToUI(comment) - this makes it as a new comment 
+
 
 }
 
