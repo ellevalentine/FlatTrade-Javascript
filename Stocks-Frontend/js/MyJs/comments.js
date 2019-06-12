@@ -194,12 +194,12 @@ function pressEditButton(data) {
 
              let commentId = data.id
 
-        //  these values are not passing the updated values ************************************************
+        modalBody.querySelector("#modal-save").addEventListener('click', (event) => {
+            event.preventDefault()
+
             let nameNew = document.querySelector(`#name-model-${data.id}`).value
             let commentNew = document.querySelector(`#comment-model-${data.id}`).value
 
-modalBody.querySelector("#modal-save").addEventListener('click', (event) => {
-    event.preventDefault()
     pressModalSave(commentId, nameNew, commentNew)})
 
 
@@ -223,39 +223,62 @@ modalBody.querySelector("#modal-save").addEventListener('click', (event) => {
 //             SaveBtn.addEventListener('click', () => pressModalSave(commentId, nameNew, commentNew))
 
 
-      
-
-    // editCommentOnServer(data, )
-    // .then(editCommentOnUI(data))
+    
 
 }
 
 
 function pressModalSave(commentId, nameNew, commentNew){
-    debugger
-    console.log("helloooooooo")
-}
 
-
-
-//----
-function editCommentOnServer(data) {
-    
     // debugger
-    console.log("server")
+
+    editCommentOnServer(commentId, nameNew, commentNew)
+    .then( resp => editCommentOnUI(resp))
+
+    console.log("hello")
+}
+
+
+
+//----
+function editCommentOnServer(commentId, nameNew, commentNew) {
+
+    let commentUrl = `http://localhost:3000/comments/${commentId}`
+
+//    debugger
+
+    return fetch(commentUrl, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: nameNew,
+            comment: commentNew
+        })
+    }).then(resp => resp.json())
+     
 }
 
 //----
 
-// function editCommentOnUI(data){
-//  console.log("UI")
-// }
+function editCommentOnUI(comment){
+    
+    console.log(comment)
+
+    // putCommentsOnPage(comment) - chucks an error 
+    // addCommentToUI(comment) - this makes it as a new comment 
+
+}
 
 // //----------------------------------------------------
 
 // // for DELETE button
 
 function pressDeleteButton(data) {
+
+    alert("Are you sure you want to delete this comment?")
     // debugger
     deleteCommentFromServer(data)
         .then(deleteCommentFromUI(data))
