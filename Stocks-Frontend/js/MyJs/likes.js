@@ -31,8 +31,10 @@ function fetchLikes(){
 // display the likes from the server
 
 function putLikesOnPage(likes){
+    
      
     likes.forEach( function(like){
+        
 
         likeId = like.id  // why does this only work as a global variable?
 

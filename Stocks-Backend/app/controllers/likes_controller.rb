@@ -15,7 +15,7 @@ class LikesController < ApplicationController
 
     def update
         
-        #  byebug
+        #   byebug
         @like = Like.find(params[:id])
         
             @like.update(likecount: params[:likecount].to_i) # grab the likes from the params sent

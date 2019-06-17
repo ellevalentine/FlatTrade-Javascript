@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
     def update
         
-        #   byebug
+        #  byebug
         @comment = Comment.find(params[:id])
         
         @comment.update(name: params[:name], comment: params[:comment]) # grab the likes from the params sent

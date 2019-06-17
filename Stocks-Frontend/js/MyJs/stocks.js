@@ -54,6 +54,15 @@ function putStocksOnPage(stocksInfo){
         
         </td>
 
+        <td id=userDropDown>
+        <select>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+        </td>
+
         <td><button type="button" class="btn btn-success">Buy</button>
         </td>
 

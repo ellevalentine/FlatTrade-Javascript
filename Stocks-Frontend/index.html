@@ -85,6 +85,24 @@
         </div>
       </div>
     </div>
+
+      <!-- stocks Modal -->
+  <div class="modal fade" id="stocksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Stocks:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="user-modal-body">
+
+          </div>
+         
+        </div>
+      </div>
+    </div>
     <!--------------------- All Section -------------------->
 
 
@@ -97,6 +115,17 @@
           <p class="text-white-50">Live updates with
             <a href="http://www.londonstockexchange.com/exchange/prices-and-markets/stocks/indices/summary/summary-indices.html?index=UKX">London Stock Exchange</a>.</p>
         </div>
+
+          <!-- search bar -->
+
+          <nav class="navbar">
+              <form class="form-inline">
+                <h5 class="text-white mb-4">Search by Stock:  </h5>
+                <br> <br>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search stock" aria-label="Search">
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+              </form>
+            </nav>
       </div>
 
       <!-- <h1 class="text-white-50">Stocks listed here</h1> -->
@@ -112,6 +141,7 @@
             <th scope="col">Price</th>
             <th scope="col">Change</th>
             <th scope="col">Quantity</th>
+            <th scope="col">User</th>
             <th scope="col">Buy</th>
 
           </tr>
@@ -125,59 +155,57 @@
 
   <!-- Portfolio Section -->
   <section id="projects" class="projects-section bg-light">
+
     <div class="container">
 
-      <!-- Featured Project Row -->
-      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-        <div class="col-xl-8 col-lg-7">
-          <img class="img-fluid mb-3 mb-lg-0" src="img/bg-masthead.jpg" alt="">
-        </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left">
-            <h4>Shoreline</h4>
-            <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/demo-image-01.jpg" alt="">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Misty</h4>
-                <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div class="col-md-10 col-lg-8 mx-auto text-center">
 
-      <!-- Project Two Row -->
-      <div class="row justify-content-center no-gutters">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/demo-image-02.jpg" alt="">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Mountains</h4>
-                <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-              </div>
-            </div>
+            <i class="fas fa-users fa-2x mb-2 text-black"></i>
+            <h2 class="text-black mb-5">Create new user...</h2>
+
+            <!-- new user form -->
+    
+            <form>
+              <fieldset>
+                <hr>
+                <legend>Personal information:</legend>
+                Name:<br>
+                <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputUserName" placeholder="Enter Name...">
+                <br>
+                Image URL:<br>
+                <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputUserImgUrl" placeholder="Enter URL...">
+                <br><br>
+                <button type="submit" class="btn btn-primary mx-auto" id="userSubmit">Create User</button>
+              </fieldset>
+              <hr>
+            </form>
+
+<br>
+            <h2 class="text-black mb-5">User Portfolios:</h2>
+
           </div>
-        </div>
-      </div>
+          <br>
+
+
+          <!-- search bar -->
+
+            <nav class="navbar navbar-light bg-light">
+              <form class="form-inline">
+                <h5>Search by User Name:  </h5>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+              </form>
+            </nav>
+            <hr>
+            <!-- user list  -->
+
+      <ul id="userList"></ul>
 
     </div>
   </section>
+
+
 
   <!-- comments Section -->
   <section id="signup" class="signup-section">
@@ -286,6 +314,8 @@
   <script src="js/MyJs/stocks.js"></script>
   <script src="js/MyJs/likes.js"></script>
   <script src="js/MyJs/comments.js"></script>
+  <script src="js/MyJs/user.js"></script>
+
 
 
 
