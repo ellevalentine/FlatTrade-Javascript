@@ -4,14 +4,32 @@ class StocksController < ApplicationController
         render json: @stocks
     end
 
-    def update
+    def create
 
         # byebug
-        # user = User.find_by(id: params[:user][:id].to_i)  # grab the id from the params sent 
-        # if user
-        #     user.update(likes: params[:user][:likes]) # grab the likes from the params sent
-        #     render json: user
-        # end
+        @stock = Stock.create(name: params[:name], price: params[:price], change: params[:change], quantity: params[:quantity], user_id: params[:user_id] )
+        render json: @stock
+    end
+
+    def update
+        
+         byebug
+        # @stock = Stock.find(params[:id])
+        
+        # @stock.update(name: params[:name], img_url: params[:img_url])
+        # render json: @stock
+       
+    end
+
+
+    def destroy
+
+        byebug
+
+        # @stock = Stock.find(params[:id])
+        # @stock.delete
+        # render json: @stock
+
     end
 
 
