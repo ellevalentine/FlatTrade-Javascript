@@ -31,8 +31,11 @@ function putStocksOnPage(stocksInfo, users_list){
     let counter = 0 // set the counter outside of the forEach loop so it doesnt get reset to 0 each time the loop runs
     let stockIdCounter = 0 
     let x = 0 
-    
+    stockTable.innerHTML=""
+
+
     stocksInfo.feed.entry.forEach(function (stockInfo){
+
         // debugger
         let users_listy = users_list
         let stockId = stockIdCounter += 1
@@ -42,49 +45,7 @@ function putStocksOnPage(stocksInfo, users_list){
         let price = stockElements[1].split(": ")[1]
         let priceNum = parseInt(price)
         let change = stockElements[2].split(": ")[1]
-        let changeNum = parseInt(change)
-
-        // let priceSelected = parseFloat(document.querySelector(`#price-${stockId}`).innerText)
-        // let amountInput = parseInt(document.querySelector(`#enter-amount-${stockId}`).value)
-        // let result = (amountInput * priceSelected)/100
-      
-
- 
-        // stockTable.innerHTML += ` <tr>
-
-        // <th scope="row">${counter += 1}</th>
-        // <td>${name}</td>
-        // <td id="price-${stockId}">${priceNum}</td>
-        // <td>${changeNum}</td>
-
-        // <td>
-        //     <fieldset>
-        //     <input type="number" min="0" onKeyPress="isInputNumber(event)" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="enter-amount-${stockId}" placeholder="Enter amount...">
-        //     </fieldset>
-        //  Cost:£${priceNum/100}
-        
-        // </td>
-
-    //     <td id="userDropDown">
-        
-    //     <select id="userSelect-${x += 1}">
-   
-    //     users.forEach(user => {
-    //         const option = document.createElement('option')
-    //         option.innerText = user.name
-    //         option.value = user.id
-    //         b.append(option)
-
-    //     })
-    //   </select>
-    //     </td>
-
-        // <td><button type="button" class="btn btn-success">Buy</button>
-        // </td>
-
-    //   </tr>
-
-      //---
+        let changeNum = parseInt(change)    
 
       let stocksTableTR = document.createElement("tr")
 

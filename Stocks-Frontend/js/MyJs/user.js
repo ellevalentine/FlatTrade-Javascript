@@ -59,52 +59,43 @@ const userModalBody = document.querySelector("#tableBodyX")
 function pressStocksButton(user){
 
     userModalBody.innerHTML =""
-
-
-        let stockTR = document.createElement('tr')
+ let p = 1
 
         user.stocks.forEach(stock => {
-            //   debugger
-            const stockTD = document.createElement('td')
-            stockTD.innerText = stock.name
+            
+            let stockTR = document.createElement('tr')
+
+    
+              
+            let row = document.createElement("th")
+            // stocksTableTH.scope = "row"  
+            row.innerHTML =  `${p++}`
+            stockTR.append(row)
+
+            const stockTD1 = document.createElement('td')
+            stockTD1.innerText = stock.name
             // stockli.value = stock.id
-            stockTR.append(stockTD)
+            stockTR.append(stockTD1)
+
+            const stockTD2 = document.createElement('td')
+            stockTD2.innerText = stock.price
+            stockTR.append(stockTD2)
+
+            const stockTD3 = document.createElement('td')
+            stockTD3.innerText = stock.change
+            stockTR.append(stockTD3)
+
+            const stockTD4 = document.createElement('td')
+            stockTD4.innerText = stock.quantity
+            stockTR.append(stockTD4)
+
+            userModalBody.append(stockTR)
+
     
         })
 
 
 
-        userModalBody.append(stockTR)
-
-
-  
-
-//------------------------------------------------
-    // const stockUL = document.createElement('ul')
-
-
-
-//------------------------------------------------
-// 
-//     <tr>
-//       <td>Mark</td>
-//       <td>Otto</td>
-//       <td>@mdo</td>
-//     </tr>
-//     <tr>
-//       <td>Jacob</td>
-//       <td>Thornton</td>
-//       <td>@fat</td>
-//     </tr>
-//     <tr>
-//       <th scope="row">3</th>
-//       <td>Larry</td>
-//       <td>the Bird</td>
-//       <td>@twitter</td>
-//     </tr>
-
-
-    
 }
 
 
