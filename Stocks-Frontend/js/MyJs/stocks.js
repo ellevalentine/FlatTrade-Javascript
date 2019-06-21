@@ -48,6 +48,7 @@ function putStocksOnPage(stocksInfo, users_list){
         let changeNum = parseInt(change)    
 
       let stocksTableTR = document.createElement("tr")
+      stocksTableTR.className = "stocksFilter"
 
       let stocksTableTH = document.createElement("th")
       stocksTableTH.scope = "row"  
@@ -175,3 +176,6 @@ function createStock(stockId){
     debugger
 
 }
+
+
+
